@@ -7,14 +7,25 @@ on:
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
+  jobs:
+  analyze:
+    name: Analyze
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript', 'python']  
+  
+ 
+ 
 
-    permissions:
+     permissions:
       # required for all workflows
       security-events: write
       actions: read
       contents: read
 
-    steps:
+      steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
